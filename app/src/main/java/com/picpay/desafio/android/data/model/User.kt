@@ -9,8 +9,17 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "users")
 @Parcelize
 data class User(
-    @SerializedName("img") val img: String,
-    @SerializedName("name") val name: String,
-    @PrimaryKey @SerializedName("id") val id: Int,
-    @SerializedName("username") val username: String
+
+    @PrimaryKey
+    @SerializedName("id")
+    val id: Int,
+
+    @SerializedName("img")
+    val img: String? = "",
+
+    @SerializedName("name")
+    val name: String? = "",
+
+    @SerializedName("username")
+    val username: String? = ""
 ) : Parcelable

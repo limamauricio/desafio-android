@@ -2,35 +2,26 @@ package com.picpay.desafio.android.ui.users
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.picpay.desafio.android.R
 import com.picpay.desafio.android.data.model.User
+import com.picpay.desafio.android.databinding.ListItemUserBinding
 
 class UserListAdapter : RecyclerView.Adapter<UserListItemViewHolder>() {
 
-    var users = emptyList<User>()
-        set(value) {
-            val result = DiffUtil.calculateDiff(
-                UserListDiffCallback(
-                    field,
-                    value
-                )
-            )
-            result.dispatchUpdatesTo(this)
-            field = value
-        }
+    private val items = ArrayList<User>()
+
+    fun setItems(items: ArrayList<User>) {
+        this.items.clear()
+        this.items.addAll(items)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListItemViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item_user, parent, false)
-
-        return UserListItemViewHolder(view)
+        val binding: ListItemUserBinding = ListItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return UserListItemViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: UserListItemViewHolder, position: Int) {
-        holder.bind(users[position])
-    }
+    override fun getItemCount(): Int = items.size
 
-    override fun getItemCount(): Int = users.size
+    override fun onBindViewHolder(holder: UserListItemViewHolder, position: Int) = holder.bind(items[position])
 }
