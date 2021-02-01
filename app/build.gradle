@@ -63,6 +63,9 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
     implementation "com.google.dagger:dagger:$dagger_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -94,6 +97,12 @@ dependencies {
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01"
     kapt 'com.google.dagger:hilt-android-compiler:2.28.1-alpha'
     kapt "androidx.hilt:hilt-compiler:1.0.0-alpha01"
+
+    //Room
+    def room_version = "2.2.5"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     testImplementation "junit:junit:$junit_version"
     testImplementation "org.mockito:mockito-core:$mockito_version"
