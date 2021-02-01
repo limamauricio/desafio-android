@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'dagger.hilt.android.plugin'
+
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -29,6 +31,10 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
@@ -48,6 +54,7 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation 'androidx.fragment:fragment-ktx:1.2.5'
 
     implementation "com.google.android.material:material:$material_version"
 
@@ -61,6 +68,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
@@ -79,6 +88,12 @@ dependencies {
 
     implementation "com.squareup.picasso:picasso:$picasso_version"
     implementation "de.hdodenhof:circleimageview:$circleimageview_version"
+
+    //Hilt
+    implementation 'com.google.dagger:hilt-android:2.28.1-alpha'
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01"
+    kapt 'com.google.dagger:hilt-android-compiler:2.28.1-alpha'
+    kapt "androidx.hilt:hilt-compiler:1.0.0-alpha01"
 
     testImplementation "junit:junit:$junit_version"
     testImplementation "org.mockito:mockito-core:$mockito_version"
